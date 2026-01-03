@@ -81,7 +81,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
                 <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-2 ml-1">Phone</label>
                 <input
                   required
-                  placeholder="+91..."
+                  placeholder="Mobile number"
                   type="tel"
                   className="w-full px-5 py-4 border border-slate-800 rounded-2xl focus:ring-2 focus:ring-[#00FF85]/20 focus:border-[#00FF85] outline-none transition-all bg-slate-950/50 text-white placeholder:text-slate-700 font-medium"
                   value={formData.phone}
@@ -97,9 +97,9 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
                     value={formData.attemptYear}
                     onChange={e => setFormData({...formData, attemptYear: e.target.value})}
                   >
-                    <option value={AttemptYear.Y2026}>2026 Cycle</option>
-                    <option value={AttemptYear.Y2027}>2027 Cycle</option>
-                    <option value={AttemptYear.Y2028}>2028 Cycle</option>
+                    <option value={AttemptYear.Y2026}>2026</option>
+                    <option value={AttemptYear.Y2027}>2027</option>
+                    <option value={AttemptYear.Y2028}>2028</option>
                   </select>
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
