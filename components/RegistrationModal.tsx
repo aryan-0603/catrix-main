@@ -24,18 +24,18 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
     e.preventDefault();
     setLoading(true);
 
-    // Simulate API call/Registration logic
+    // Simulate registration logic
     setTimeout(() => {
       storageService.saveUser(formData);
       setLoading(false);
       setIsSuccess(true);
       
-      // Allow user to see the success state for a moment before closing
+      // Short delay for success visual before closing
       setTimeout(() => {
         setIsSuccess(false);
         onSuccess();
-      }, 1200);
-    }, 1000);
+      }, 1000);
+    }, 1200);
   };
 
   const Logo = () => (
@@ -54,7 +54,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
             <div>
               <Logo />
               <h2 className="text-3xl font-bold text-white tracking-tight">Register for CATRIX</h2>
-              <p className="text-slate-400 text-sm mt-3 font-medium leading-relaxed">Join the community of top-tier CAT aspirants today.</p>
+              <p className="text-slate-400 text-sm mt-3 font-medium leading-relaxed">Unlock access to our high-precision simulation engine.</p>
             </div>
             <button onClick={onClose} className="p-2 text-slate-500 hover:text-white hover:bg-slate-800 rounded-full transition-all">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -140,7 +140,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
           </form>
 
           <p className="text-[9px] text-center text-slate-600 mt-10 leading-relaxed uppercase tracking-[0.25em] font-bold">
-            Secure Enrollment System • No Spam
+            Secure Platform • Data Protected
           </p>
         </div>
       </div>
