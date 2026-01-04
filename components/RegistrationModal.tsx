@@ -24,6 +24,20 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Email validation: must have @ and .com
+    const emailLower = formData.email.toLowerCase();
+    if (!emailLower.includes('@') || !emailLower.includes('.com')) {
+      setError('A valid email with "@" and ".com" is required.');
+      return;
+    }
+
+    // Phone validation: exactly 10 digits
+    if (formData.phone.length !== 10) {
+      setError('Please enter a valid 10-digit phone number.');
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
@@ -33,13 +47,15 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
       setIsSuccess(true);
     } catch (err: any) {
       setLoading(false);
-      setError(err.message || 'Failed to register. Please check your connection.');
+      const msg = err.message || 'Registration failed.';
+      setError(msg);
       console.error('Registration failed:', err);
     }
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const numericValue = e.target.value.replace(/\D/g, '');
+    // Strip non-digits and limit to 10 characters
+    const numericValue = e.target.value.replace(/\D/g, '').slice(0, 10);
     setFormData({ ...formData, phone: numericValue });
   };
 
@@ -70,7 +86,8 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 {error && (
-                  <div className="bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-xl text-xs font-bold uppercase tracking-wider">
+                  <div className="bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-xl text-[11px] font-bold uppercase tracking-wider leading-relaxed">
+                    <span className="block mb-1">⚠️ Error:</span>
                     {error}
                   </div>
                 )}
@@ -102,8 +119,9 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
                     <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-2 ml-1">Phone</label>
                     <input
                       required
-                      placeholder="Digits only"
+                      placeholder="10-digit mobile number"
                       type="tel"
+                      maxLength={10}
                       className="w-full px-5 py-4 border border-slate-800 rounded-2xl focus:ring-2 focus:ring-[#00FF85]/20 focus:border-[#00FF85] outline-none transition-all bg-slate-950/50 text-white placeholder:text-slate-700 font-medium"
                       value={formData.phone}
                       onChange={handlePhoneChange}
@@ -137,9 +155,9 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
                   {loading ? (
                     <span className="flex items-center justify-center">
                       <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-black" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                      Processing...
+                      Verifying...
                     </span>
-                  ) : 'Register Now'}
+                  ) : 'Secure My Seat'}
                 </button>
               </form>
             </>
@@ -176,7 +194,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
           )}
 
           <p className="text-[9px] text-center text-slate-600 mt-10 leading-relaxed uppercase tracking-[0.25em] font-bold">
-            Secure Platform • Cloud Synchronized
+            Secure Platform • Encrypted Data Transmission
           </p>
         </div>
       </div>
