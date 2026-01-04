@@ -21,21 +21,14 @@ const ScrollToTop = () => {
 
 const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const externalTestUrl = "https://test-platform-url.com";
 
   const handleMockAction = () => {
-    // If registered, we still allow them to try and visit the URL
-    // but the registration flow itself won't force-redirect anymore.
-    if (storageService.isRegistered()) {
-      window.open(externalTestUrl, '_blank');
-    } else {
-      setIsModalOpen(true);
-    }
+    // Removed redirection logic to ensure registration modal always opens
+    setIsModalOpen(true);
   };
 
   const handleRegistrationSuccess = () => {
-    // Simply close the modal after registration
-    // The user can then click the CTA again to visit the test link if they wish
+    // Simply close the modal after registration is successful
     setIsModalOpen(false);
   };
 
