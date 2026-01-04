@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React;
 
 const About: React.FC = () => {
   return (
@@ -13,11 +12,11 @@ const About: React.FC = () => {
         <div className="prose prose-invert prose-slate max-w-none">
           <div className="mb-32 grid md:grid-cols-2 gap-20 items-start">
             <div className="text-3xl text-slate-300 font-semibold leading-snug">
-              CATRIX was born out of a simple observation: most online "mocks" were too easy, poorly timed, 
+              CATRIX was born out of a simple observation: most online 'mocks' were too easy, poorly timed, 
               or visually inconsistent with the actual exam. 
             </div>
             <div className="text-xl text-slate-500 leading-relaxed font-medium">
-              Our mission is to provide the most disciplined and realistic environment for CAT aspirants who aren't just looking for "practice," but for an actual simulation of D-Day. We believe precision is the only path to the top.
+              Our mission is to provide the most disciplined and realistic environment for CAT aspirants who aren't just looking for 'practice' but for an actual simulation of D-Day. We believe precision is the only path to the top.
             </div>
           </div>
 

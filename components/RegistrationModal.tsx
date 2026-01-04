@@ -16,6 +16,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
     attemptYear: AttemptYear.Y2026
   });
   const [loading, setLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   if (!isOpen) return null;
 
@@ -23,11 +24,18 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
     e.preventDefault();
     setLoading(true);
 
+    // Simulate API call/Registration logic
     setTimeout(() => {
       storageService.saveUser(formData);
       setLoading(false);
-      onSuccess();
-    }, 800);
+      setIsSuccess(true);
+      
+      // Allow user to see the success state for a moment before closing
+      setTimeout(() => {
+        setIsSuccess(false);
+        onSuccess();
+      }, 1200);
+    }, 1000);
   };
 
   const Logo = () => (
@@ -45,8 +53,8 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
           <div className="flex justify-between items-start mb-8">
             <div>
               <Logo />
-              <h2 className="text-3xl font-bold text-white tracking-tight">Access Secure Simulation</h2>
-              <p className="text-slate-400 text-sm mt-3 font-medium leading-relaxed">Register to unlock high-fidelity mock exams and percentile analytics.</p>
+              <h2 className="text-3xl font-bold text-white tracking-tight">Register for CATRIX</h2>
+              <p className="text-slate-400 text-sm mt-3 font-medium leading-relaxed">Join the community of top-tier CAT aspirants today.</p>
             </div>
             <button onClick={onClose} className="p-2 text-slate-500 hover:text-white hover:bg-slate-800 rounded-full transition-all">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -109,21 +117,30 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
             </div>
 
             <button
-              disabled={loading}
+              disabled={loading || isSuccess}
               type="submit"
-              className="w-full bg-[#00FF85] text-black py-5 rounded-2xl font-black uppercase tracking-widest text-base hover:bg-[#00cc6a] transition-all shadow-[0_15px_40px_rgba(0,255,133,0.2)] disabled:bg-slate-700 disabled:text-slate-500 disabled:cursor-not-allowed mt-4 active:scale-[0.98]"
+              className={`w-full py-5 rounded-2xl font-black uppercase tracking-widest text-base transition-all shadow-[0_15px_40px_rgba(0,255,133,0.1)] mt-4 active:scale-[0.98] ${
+                isSuccess 
+                  ? 'bg-emerald-500 text-white' 
+                  : 'bg-[#00FF85] text-black hover:bg-[#00cc6a]'
+              } disabled:bg-slate-700 disabled:text-slate-500 disabled:cursor-not-allowed`}
             >
               {loading ? (
                 <span className="flex items-center justify-center">
                   <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-black" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                   Processing...
                 </span>
+              ) : isSuccess ? (
+                <span className="flex items-center justify-center">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" /></svg>
+                  Registered
+                </span>
               ) : 'Submit'}
             </button>
           </form>
 
           <p className="text-[9px] text-center text-slate-600 mt-10 leading-relaxed uppercase tracking-[0.25em] font-bold">
-            Data encrypted. Secure Environment. No Spam.
+            Secure Enrollment System • No Spam
           </p>
         </div>
       </div>

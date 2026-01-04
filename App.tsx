@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
@@ -25,6 +24,8 @@ const App: React.FC = () => {
   const externalTestUrl = "https://test-platform-url.com";
 
   const handleMockAction = () => {
+    // If registered, we still allow them to try and visit the URL
+    // but the registration flow itself won't force-redirect anymore.
     if (storageService.isRegistered()) {
       window.open(externalTestUrl, '_blank');
     } else {
@@ -33,9 +34,9 @@ const App: React.FC = () => {
   };
 
   const handleRegistrationSuccess = () => {
+    // Simply close the modal after registration
+    // The user can then click the CTA again to visit the test link if they wish
     setIsModalOpen(false);
-    // After registration, immediately redirect to test platform
-    window.open(externalTestUrl, '_blank');
   };
 
   return (
