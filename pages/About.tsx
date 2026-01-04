@@ -27,7 +27,7 @@ const About: React.FC = () => {
             </div>
             <div className="bg-slate-900 p-16 rounded-[4rem] border border-slate-800 hover:border-[#00FF85]/30 transition-all">
               <h3 className="text-3xl font-bold text-white mb-6 tracking-tight">Academic Depth</h3>
-              <p className="text-slate-500 leading-relaxed text-lg font-medium">Our content team consists of IIM alumni who understand the nuance of question selection and trap-setting.</p>
+              <p className="text-slate-500 leading-relaxed text-lg font-medium">Our content team consists of experts who understand the nuance of question selection and trap-setting.</p>
             </div>
           </div>
 

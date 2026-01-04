@@ -21,7 +21,7 @@ const Home: React.FC<HomeProps> = ({ onMockClick }) => {
                 <span className="text-[#00FF85] emerald-glow">Precision Realism.</span>
               </h1>
               <p className="text-2xl text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-12 font-medium">
-                Stop practicing. Start simulating. Experience high-fidelity mocks designed by IIM alumni for serious aspirants. 
+                Stop practicing. Start simulating. Experience high-fidelity mocks designed by experts for serious aspirants. 
               </p>
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-6">
                 <button

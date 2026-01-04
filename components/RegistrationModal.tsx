@@ -38,6 +38,12 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
     }, 1200);
   };
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Only allow digits
+    const numericValue = e.target.value.replace(/\D/g, '');
+    setFormData({ ...formData, phone: numericValue });
+  };
+
   const Logo = () => (
     <div className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center overflow-hidden border border-slate-700 mb-6">
       <div className="flex flex-col items-center justify-center">
@@ -89,11 +95,11 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
                 <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-2 ml-1">Phone</label>
                 <input
                   required
-                  placeholder="Mobile number"
+                  placeholder="Digits only"
                   type="tel"
                   className="w-full px-5 py-4 border border-slate-800 rounded-2xl focus:ring-2 focus:ring-[#00FF85]/20 focus:border-[#00FF85] outline-none transition-all bg-slate-950/50 text-white placeholder:text-slate-700 font-medium"
                   value={formData.phone}
-                  onChange={e => setFormData({...formData, phone: e.target.value})}
+                  onChange={handlePhoneChange}
                 />
               </div>
               <div className="space-y-1">
