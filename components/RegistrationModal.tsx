@@ -72,7 +72,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
               <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-2 ml-1">Full Name</label>
               <input
                 required
-                placeholder="Ex: Alan Turing"
+                placeholder=""
                 type="text"
                 className="w-full px-5 py-4 border border-slate-800 rounded-2xl focus:ring-2 focus:ring-[#00FF85]/20 focus:border-[#00FF85] outline-none transition-all bg-slate-950/50 text-white placeholder:text-slate-700 font-medium"
                 value={formData.fullName}
@@ -83,7 +83,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
               <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-2 ml-1">Email Address</label>
               <input
                 required
-                placeholder="turing@matrix.com"
+                placeholder=""
                 type="email"
                 className="w-full px-5 py-4 border border-slate-800 rounded-2xl focus:ring-2 focus:ring-[#00FF85]/20 focus:border-[#00FF85] outline-none transition-all bg-slate-950/50 text-white placeholder:text-slate-700 font-medium"
                 value={formData.email}
@@ -95,7 +95,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
                 <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-2 ml-1">Phone</label>
                 <input
                   required
-                  placeholder="Digits only"
+                  placeholder=""
                   type="tel"
                   className="w-full px-5 py-4 border border-slate-800 rounded-2xl focus:ring-2 focus:ring-[#00FF85]/20 focus:border-[#00FF85] outline-none transition-all bg-slate-950/50 text-white placeholder:text-slate-700 font-medium"
                   value={formData.phone}

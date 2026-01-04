@@ -86,10 +86,6 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        
-        <div className="border-t border-slate-900 mt-20 pt-10 text-center text-[10px] tracking-[0.2em] font-bold uppercase text-slate-600">
-          <p>© 2026 CATRIX Edutech Pvt. Ltd. | Precision Engineering</p>
-        </div>
       </div>
     </footer>
   );
